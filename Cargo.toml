@@ -14,8 +14,11 @@ version = "0.7.0"
 byteorder = {version = "1", default-features = false}
 defmt = {version = "0.3", optional = true}
 embedded-hal = "1.0.0"
+embedded-hal-async = { version = "1.0.0", optional = true }
 heapless = "^0.8"
 log = {version = "0.4", default-features = false, optional = true}
+
+futures = { version = "0.3", default-features = false, features = ["async-await", "executor"] }
 
 [dev-dependencies]
 chrono = "0.4"
@@ -26,6 +29,8 @@ hex-literal = "0.4.1"
 sha2 = "0.10"
 
 [features]
-default = ["log"]
+default = ["log", "asynch"]
 defmt-log = ["dep:defmt"]
 log = ["dep:log"]
+# Enable Async support for SdCard and AsyncBlockDevice trait
+asynch = ["dep:embedded-hal-async"]

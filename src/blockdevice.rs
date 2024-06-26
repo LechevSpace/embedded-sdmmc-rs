@@ -52,6 +52,24 @@ pub trait BlockDevice {
     fn num_blocks(&self) -> Result<BlockCount, Self::Error>;
 }
 
+/// Represents a block device - a device which can read and write blocks (or
+/// sectors). Only supports devices which are <= 2 TiB in size.
+pub trait AsyncBlockDevice {
+    /// The errors that the `BlockDevice` can return. Must be debug formattable.
+    type Error: core::fmt::Debug;
+    /// Read one or more blocks, starting at the given block index.
+    async fn read(
+        &self,
+        blocks: &mut [Block],
+        start_block_idx: BlockIdx,
+        reason: &str,
+    ) -> Result<(), Self::Error>;
+    /// Write one or more blocks, starting at the given block index.
+    async fn write(&self, blocks: &[Block], start_block_idx: BlockIdx) -> Result<(), Self::Error>;
+    /// Determine how many blocks this device can hold.
+    async fn num_blocks(&self) -> Result<BlockCount, Self::Error>;
+}
+
 impl Block {
     /// All our blocks are a fixed length of 512 bytes. We do not support
     /// 'Advanced Format' Hard Drives with 4 KiB blocks, nor weird old

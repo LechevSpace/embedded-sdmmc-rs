@@ -10,6 +10,9 @@ The format is based on [Keep a Changelog] and this project adheres to [Semantic 
 
 - Updated to `heapless` ^0.8
 
+### Added
+- __Breaking Change__: SdCard Blocking and Async modes and a news AsyncBlockDevice Trait under the `asynch` feature
+
 ## [Version 0.7.0] - 2024-02-04
 
 ### Changed
