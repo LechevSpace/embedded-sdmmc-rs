@@ -19,10 +19,12 @@ heapless = "^0.8"
 log = {version = "0.4", default-features = false, optional = true}
 
 futures = { version = "0.3", default-features = false, features = ["async-await", "executor"] }
+async_fn_traits = "0.1.1"
 
 [dev-dependencies]
 chrono = "0.4"
 embedded-hal-bus = "0.1.0"
+embedded-hal-mock = { version = "0.11", features = ["embedded-hal-async"] }
 env_logger = "0.10.0"
 flate2 = "1.0"
 hex-literal = "0.4.1"
