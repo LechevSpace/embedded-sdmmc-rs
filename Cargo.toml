@@ -33,4 +33,5 @@ defmt-log = ["dep:defmt"]
 log = ["dep:log"]
 # Enable Async support for SdCard and AsyncBlockDevice trait
 asynch = ["dep:embedded-hal-async"]
+# Requires nightly!
 async-closure = ["asynch"]
