@@ -198,6 +198,7 @@ where
     ///
     /// Useful if you need to re-clock the SPI, but does not perform card
     /// initialisation.
+    #[cfg(feature = "async-closure")]
     pub async fn spi<T, F>(&self, func: F) -> T
     where
         F: AsyncFnOnce(&mut SPI) -> T,
