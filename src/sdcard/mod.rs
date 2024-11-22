@@ -931,10 +931,9 @@ where
                         warn!("Got response: {:x}, trying again..", _r);
                     }
                 }
-
                 delay
-                    .delay_async(&mut self.delayer, Error::CardNotFound)
-                    .await?;
+                .delay_async(&mut self.delayer, Error::CardNotFound)
+                .await?;
             }
             // Enable CRC
             debug!("Enable CRC: {}", self.options.use_crc);
@@ -1075,8 +1074,8 @@ where
                 break;
             }
             delay
-                .delay_async(&mut self.delayer, Error::TimeoutWaitNotBusy)
-                .await?;
+            .delay_async(&mut self.delayer, Error::TimeoutWaitNotBusy)
+            .await?;
         }
         Ok(())
     }
