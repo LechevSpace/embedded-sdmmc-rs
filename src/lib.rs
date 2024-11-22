@@ -54,7 +54,6 @@
 
 #![cfg_attr(not(test), no_std)]
 #![deny(missing_docs)]
-#![cfg_attr(feature = "asynch", feature(async_fn_traits))]
 // Since we don't have MSRV we always enable this feature when `asynch` is enabled
 #![cfg_attr(feature = "asynch", allow(stable_features))]
 #![cfg_attr(feature = "asynch-closure", feature(async_closure))]

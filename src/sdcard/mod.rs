@@ -6,7 +6,7 @@
 pub mod proto;
 
 use crate::{trace, Block, BlockCount, BlockDevice, BlockIdx};
-use core::{cell::RefCell, marker::PhantomData, ops::AsyncFnOnce};
+use core::{cell::RefCell, marker::PhantomData};
 use proto::*;
 
 // ****************************************************************************
@@ -198,10 +198,10 @@ where
     ///
     /// Useful if you need to re-clock the SPI, but does not perform card
     /// initialisation.
-    #[cfg(feature = "async-closure")]
+    #[cfg(feature = "asynch-closure")]
     pub async fn spi<T, F>(&self, func: F) -> T
     where
-        F: AsyncFnOnce(&mut SPI) -> T,
+        F: core::ops::AsyncFnOnce(&mut SPI) -> T,
     {
         let mut inner = self.inner.borrow_mut();
         func(&mut inner.spi).await
