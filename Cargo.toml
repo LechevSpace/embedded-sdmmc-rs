@@ -28,8 +28,8 @@ hex-literal = "0.4.1"
 sha2 = "0.10"
 
 [features]
-default = ["log", "asynch"]
-defmt-log = ["dep:defmt"]
+default = ["asynch", "defmt-log"]
+defmt-log = ["dep:defmt", "embedded-hal/defmt-03", "embedded-hal-async?/defmt-03", "embedded-io/defmt-03"]
 log = ["dep:log"]
 # Enable Async support for SdCard and AsyncBlockDevice trait
 asynch = ["dep:embedded-hal-async"]
